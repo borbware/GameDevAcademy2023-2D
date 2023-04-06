@@ -8,6 +8,8 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.position = transform.position + new Vector3(0,1,0);
+        transform.Translate(new Vector3(0,1,0), Space.Self);
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
