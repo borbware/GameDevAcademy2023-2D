@@ -5,7 +5,6 @@ public class RotateExample : MonoBehaviour
     [SerializeField] GameObject pivot;
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -21,5 +20,6 @@ public class RotateExample : MonoBehaviour
         
         
         transform.Translate(transform.up * 2f * Time.deltaTime);
+        
     }
 }
