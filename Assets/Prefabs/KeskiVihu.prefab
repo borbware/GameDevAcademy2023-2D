@@ -1,27 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2143358401856425361
+--- !u!1001 &4678382323954239735
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 513255106224005637, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2088819741670678598, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2088819741670678598, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2088819741670678598, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2088819741670678598, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2088819741670678598, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,14 +70,14 @@ PrefabInstance:
     - target: {fileID: 2088819741670678599, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d044b0056a7437e47af522a310c5f048, type: 3}
+      objectReference: {fileID: 21300000, guid: d1d3b527bf425224c9639d710525e019, type: 3}
     - target: {fileID: 2088819741670678617, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: m_Size.x
-      value: 0.56
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 2088819741670678617, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: m_Size.y
-      value: 0.52
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 2088819741670678617, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -85,23 +89,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2088819741670678618, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: m_Name
-      value: PikkuVihu
+      value: KeskiVihu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003535816061647681, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.194
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003535816061647681, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.013
       objectReference: {fileID: 0}
     - target: {fileID: 8347267017190165019, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: size
-      value: 0.5
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8493486727318594186, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.188
+      objectReference: {fileID: 0}
+    - target: {fileID: 8493486727318594186, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: 9039408859736690811, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: hp
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9039408859736690811, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
-      propertyPath: pos1
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9039408859736690811, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
-      propertyPath: pos2
-      value: 
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9039408859736690811, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: pos3
@@ -109,19 +121,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9039408859736690811, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: initForce
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9039408859736690811, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: initTorque
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9039408859736690811, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: tinyAsteroid
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 90713422946823627, guid: cb04a27f651fa744bbf3522192499e0a, type: 3}
     - target: {fileID: 9039408859736690811, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}
       propertyPath: bulletPushForce
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb02c139ba6f3348afa17190ab4a04f, type: 3}

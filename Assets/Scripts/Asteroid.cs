@@ -7,15 +7,61 @@ public class Asteroid : MonoBehaviour
     [SerializeField] Transform pos3;
     [SerializeField] GameObject tinyAsteroid;
 
+    [SerializeField] int hp;
+    [SerializeField] float hurtPeriod;
+    [SerializeField] float bulletPushForce;
+    [SerializeField] float initTorque;
+    [SerializeField] float initForce;
+    float hurtTime = 1f;
+    Renderer rend;
+    Rigidbody2D rb;
+
+    void Start()
+    {
+        rend = gameObject.GetComponent<Renderer>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+
+        rb.AddTorque(Random.Range(-1f, 1f) * initTorque);
+        rb.AddForce(Random.insideUnitCircle * initForce);
+    }
+    void Update()
+    {
+        if (hurtTime < hurtPeriod)
+        {
+            Debug.Log("jepjhep");
+            rend.material.SetColor(
+                "_EmissionColor",
+                Color.Lerp(Color.white, Color.black, hurtTime / hurtPeriod));
+        }
+        hurtTime += Time.deltaTime;
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("asdfsa");
         if (other.gameObject.tag == "Bullet")
         {
-            Destroy(gameObject);
-            Instantiate(tinyAsteroid, pos1.position, transform.rotation);
-            Instantiate(tinyAsteroid, pos2.position, transform.rotation);
-            Instantiate(tinyAsteroid, pos3.position, transform.rotation);
+            Destroy(other.gameObject);
+            hp -= 1;
+            if (hp == 0)
+            {
+                Destroy(gameObject);
+                if (pos1 != null)
+                {
+                    Instantiate(tinyAsteroid, pos1.position, transform.rotation);
+                }
+                if (pos2 != null)
+                {
+                    Instantiate(tinyAsteroid, pos2.position, transform.rotation);
+                }
+                if (pos3 != null)
+                {
+                    Instantiate(tinyAsteroid, pos3.position, transform.rotation);
+                }
+            } else {
+                rend.material.SetColor("_EmissionColor", Color.white);
+                hurtTime = 0f;
+                rb.AddForce(other.gameObject.transform.up * bulletPushForce);
+            }
         }
     }
 }

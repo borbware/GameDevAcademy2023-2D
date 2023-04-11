@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4a698b6ebdd8e43929bd782d7562a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: 0
 --- !u!50 &4669902967010440808
 Rigidbody2D:
   serializedVersion: 4
@@ -114,7 +115,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 91a844437dbf86940a267bfe5e21cd6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,7 +137,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 271bc21e72e2aa842b1d8baa875db4a6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.056397676, a: 1}
+  m_Color: {r: 0.72075474, g: 1, b: 0.73608583, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

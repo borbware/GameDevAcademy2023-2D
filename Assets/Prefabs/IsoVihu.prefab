@@ -90,7 +90,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0fe422ef0eef83749a5eecd486786357, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,7 +136,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -184,7 +184,12 @@ MonoBehaviour:
   pos1: {fileID: 5003535816061647681}
   pos2: {fileID: 8493486727318594186}
   pos3: {fileID: 3586393000213390192}
-  tinyAsteroid: {fileID: 90713422946823627, guid: cb04a27f651fa744bbf3522192499e0a, type: 3}
+  tinyAsteroid: {fileID: 6633812779437975725, guid: 4bc4550e7d8fdbb4c8a37d68717e55ca, type: 3}
+  hp: 30
+  hurtPeriod: 0.1
+  bulletPushForce: 6
+  initTorque: 50
+  initForce: 50
 --- !u!114 &8347267017190165019
 MonoBehaviour:
   m_ObjectHideFlags: 0
