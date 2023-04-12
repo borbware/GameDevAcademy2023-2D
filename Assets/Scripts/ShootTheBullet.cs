@@ -3,26 +3,53 @@ using UnityEngine;
 public class ShootTheBullet : MonoBehaviour
 {
     [SerializeField] GameObject bullet;
+    [SerializeField] float bulletLifeTime;
     [SerializeField] Transform shotPosition;
+    [SerializeField] float recoilForce;
     [SerializeField] float shotForce;
-    [SerializeField] float lifeTime;
     [SerializeField] float shotPeriod;
+
+    Rigidbody2D rb;
 
     float shotTime = 0f;
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
+    void CreateBullet(float rotation)
+    {
+        Quaternion newRotation = Quaternion.Euler(0, 0, rotation);
 
-    void Update()
+        GameObject newBullet = Instantiate(
+            bullet,
+            shotPosition.position,
+            newRotation * transform.rotation  // rotate transform by newRotation
+        );
+        
+        Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
+
+        // force direction is rotated by newRotation as well
+        bulletRb.AddForce(
+            newRotation * transform.up * shotForce
+        );
+        Destroy(newBullet, bulletLifeTime);
+    }
+    void FixedUpdate()
     {
         if (Input.GetButton("Fire1") && shotTime <= 0)
         {
-            GameObject newBullet = Instantiate(bullet, shotPosition.position, transform.rotation);
-            Rigidbody2D rb = newBullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(transform.up * shotForce);
-            Destroy(newBullet, lifeTime);
+            CreateBullet(0);
+            rb.AddForce(-transform.up * recoilForce);
             shotTime = shotPeriod;
+        }
+        if (Input.GetButton("Fire2") && shotTime <= 0)
+        {
+            for (int i = -3; i <= 3; i++)
+            {
+                CreateBullet(i * 10); // create rotations in increments of 10 degrees
+                rb.AddForce(-transform.up * recoilForce * 5);
+            }
+            shotTime = shotPeriod * 10;
         }
         shotTime -= Time.deltaTime;
     }
