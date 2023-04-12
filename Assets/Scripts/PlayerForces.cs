@@ -17,7 +17,7 @@ public class PlayerForces : MonoBehaviour
     void FixedUpdate()
     {
         if (Input.GetButton("Jump")) { // continuous
-            rb.AddForce(transform.up * thrust * Time.fixedDeltaTime);
+            rb.AddForce(transform.up * thrust * Time.fixedDeltaTime * (-1));
             if (!particles.isEmitting)
                 particles.Play();
         }
