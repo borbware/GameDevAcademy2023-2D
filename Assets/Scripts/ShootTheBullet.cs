@@ -47,8 +47,8 @@ public class ShootTheBullet : MonoBehaviour
             for (int i = -3; i <= 3; i++)
             {
                 CreateBullet(i * 10); // create rotations in increments of 10 degrees
-                rb.AddForce(-transform.up * recoilForce * 5);
             }
+            rb.AddForce(-transform.up * recoilForce * 10);
             shotTime = shotPeriod * 10;
         }
         shotTime -= Time.deltaTime;

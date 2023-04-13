@@ -45,6 +45,7 @@ public class Asteroid : MonoBehaviour
             if (hp == 0)
             {
                 Destroy(gameObject);
+                UI.instance.UpdateScore(1000);
                 if (pos1 != null)
                 {
                     Instantiate(tinyAsteroid, pos1.position, transform.rotation);
@@ -57,7 +58,10 @@ public class Asteroid : MonoBehaviour
                 {
                     Instantiate(tinyAsteroid, pos3.position, transform.rotation);
                 }
-            } else {
+            }
+            else
+            {
+                UI.instance.UpdateScore(10);
                 rend.material.SetColor("_EmissionColor", Color.white);
                 hurtTime = 0f;
                 rb.AddForce(other.gameObject.transform.up * bulletPushForce);
