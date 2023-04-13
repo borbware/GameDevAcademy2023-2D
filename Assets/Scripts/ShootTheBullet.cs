@@ -3,6 +3,7 @@ using UnityEngine;
 public class ShootTheBullet : MonoBehaviour
 {
     [SerializeField] GameObject bullet;
+    [SerializeField] AudioSource bulletAudio;
     [SerializeField] float bulletLifeTime;
     [SerializeField] Transform shotPosition;
     [SerializeField] float recoilForce;
@@ -39,6 +40,7 @@ public class ShootTheBullet : MonoBehaviour
         if (Input.GetButton("Fire1") && shotTime <= 0)
         {
             CreateBullet(0);
+            bulletAudio.Play();
             rb.AddForce(-transform.up * recoilForce);
             shotTime = shotPeriod;
         }
@@ -48,6 +50,7 @@ public class ShootTheBullet : MonoBehaviour
             {
                 CreateBullet(i * 10); // create rotations in increments of 10 degrees
             }
+            bulletAudio.Play();
             rb.AddForce(-transform.up * recoilForce * 10);
             shotTime = shotPeriod * 10;
         }
