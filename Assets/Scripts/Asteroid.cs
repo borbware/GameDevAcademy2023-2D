@@ -28,7 +28,6 @@ public class Asteroid : MonoBehaviour
     {
         if (hurtTime < hurtPeriod)
         {
-            Debug.Log("jepjhep");
             rend.material.SetColor(
                 "_EmissionColor",
                 Color.Lerp(Color.white, Color.black, hurtTime / hurtPeriod));

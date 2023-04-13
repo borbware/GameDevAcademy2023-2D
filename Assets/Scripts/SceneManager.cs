@@ -1,14 +1,18 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SceneManager : MonoBehaviour
 {
     public float halfScreenWidth = 11.2f;
     public float halfScreenHeight = 6.3f;
 
+    [SerializeField] AudioMixerSnapshot volumeOn;
+
     [SerializeField] GameObject Asteroid;
     void Start()
     {
-        SpawnAsteroids(3);
+        SpawnAsteroids(3); // 3 asteroids
+        volumeOn.TransitionTo(3); // 3 seconds
     }
     void SpawnAsteroids(int number)
     {
