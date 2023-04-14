@@ -23,8 +23,44 @@ public class Asteroid : MonoBehaviour
 
         rb.AddTorque(Random.Range(-1f, 1f) * initTorque);
         rb.AddForce(Random.insideUnitCircle * initForce);
+
+        LevelManager.instance.asteroids.Add(gameObject);
     }
+
     void Update()
+    {
+        HurtUpdate();
+    }
+    void UpdateLevelManager()
+    {
+        LevelManager.instance.asteroids.Remove(gameObject);
+        if (LevelManager.instance.asteroids.Count == 0)
+            LevelManager.instance.SpawnAsteroids();
+    }
+    void SpawnTinyAsteroids()
+    {
+        if (pos1 != null)
+            Instantiate(tinyAsteroid, pos1.position, transform.rotation);
+        if (pos2 != null)
+            Instantiate(tinyAsteroid, pos2.position, transform.rotation);
+        if (pos3 != null)
+            Instantiate(tinyAsteroid, pos3.position, transform.rotation);
+    }
+    void KillSelf()
+    {
+        Destroy(gameObject);
+        GameManager.instance.AddScore(1000);
+        SpawnTinyAsteroids();
+        UpdateLevelManager();
+    }
+    void HurtSelf(GameObject hurter)
+    {
+        GameManager.instance.AddScore(10);
+        rend.material.SetColor("_EmissionColor", Color.white);
+        hurtTime = 0f;
+        rb.AddForce(hurter.transform.up * bulletPushForce);
+    }
+    void HurtUpdate()
     {
         if (hurtTime < hurtPeriod)
         {
@@ -34,7 +70,6 @@ public class Asteroid : MonoBehaviour
         }
         hurtTime += Time.deltaTime;
     }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Bullet")
@@ -42,29 +77,9 @@ public class Asteroid : MonoBehaviour
             Destroy(other.gameObject);
             hp -= 1;
             if (hp == 0)
-            {
-                Destroy(gameObject);
-                UI.instance.UpdateScore(1000);
-                if (pos1 != null)
-                {
-                    Instantiate(tinyAsteroid, pos1.position, transform.rotation);
-                }
-                if (pos2 != null)
-                {
-                    Instantiate(tinyAsteroid, pos2.position, transform.rotation);
-                }
-                if (pos3 != null)
-                {
-                    Instantiate(tinyAsteroid, pos3.position, transform.rotation);
-                }
-            }
+                KillSelf();
             else
-            {
-                UI.instance.UpdateScore(10);
-                rend.material.SetColor("_EmissionColor", Color.white);
-                hurtTime = 0f;
-                rb.AddForce(other.gameObject.transform.up * bulletPushForce);
-            }
+                HurtSelf(other.gameObject);
         }
     }
 }

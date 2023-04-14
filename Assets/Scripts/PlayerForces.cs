@@ -8,6 +8,7 @@ public class PlayerForces : MonoBehaviour
     [SerializeField] float maxVelocity = 100;
     [SerializeField] float thrust = 90;
     [SerializeField] float torque = 90;
+    [SerializeField] float torqueWhenShooting = 20;
 
     void Start()
     {
@@ -36,7 +37,11 @@ public class PlayerForces : MonoBehaviour
 
         if ( Mathf.Abs(rb.angularVelocity) <= maxAngularVelocity )
         {
-            rb.AddTorque(- rotateInput * Time.fixedDeltaTime * torque);
+            float applyTorque = 
+                (Input.GetButton("Fire1") || Input.GetButton("Fire2"))
+                ? torqueWhenShooting
+                : torque; 
+            rb.AddTorque(- rotateInput * Time.fixedDeltaTime * applyTorque);
         }
         else
         {
@@ -47,4 +52,15 @@ public class PlayerForces : MonoBehaviour
             );
         }
     }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Asteroid")
+        {
+            GameManager.instance.AddLives(-1);
+            gameObject.transform.position = Vector3.zero;
+            gameObject.transform.rotation = Quaternion.identity;
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
+    }    
 }

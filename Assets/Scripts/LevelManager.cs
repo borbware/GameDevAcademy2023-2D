@@ -1,35 +1,47 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class SceneManager : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
+    public static LevelManager instance;
     public float halfScreenWidth = 11.2f;
     public float halfScreenHeight = 6.3f;
-
+    public List<GameObject> asteroids = new List<GameObject>();
+    [SerializeField] int asteroidsToSpawn = 3;
     [SerializeField] AudioMixerSnapshot volumeOn;
+    [SerializeField] AudioMixerSnapshot volumeOff;
 
     [SerializeField] GameObject Asteroid;
     void Start()
     {
-        SpawnAsteroids(3); // 3 asteroids
-        volumeOn.TransitionTo(3); // 3 seconds
+        if (instance != null)
+            Destroy(gameObject);
+        else
+            instance = this;
+
+        SpawnAsteroids();
     }
-    void SpawnAsteroids(int number)
+
+    public void SpawnAsteroids()
     {
-        for (int i = 0; i < number; i++)
+        for (int i = 0; i < asteroidsToSpawn; i++)
         {
             Vector2 position;
+            int tries = 10;
             do
             {
                 position = new Vector2(
                     Random.Range(-halfScreenWidth, halfScreenWidth),
                     Random.Range(-halfScreenHeight, halfScreenHeight)
                 );
+                tries--;
             }
-            while (PositionHasOther(position, 5));
+            while (PositionHasOther(position, 5) && tries > 0);
 
             Instantiate(Asteroid, position, Quaternion.identity);
         }
+        asteroidsToSpawn++;
     }
     bool PositionHasOther(Vector2 pos, float radius)
     {

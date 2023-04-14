@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coin
   - Bullet
+  - Asteroid
   layers:
   - Default
   - TransparentFX

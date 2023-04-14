@@ -1,36 +1,35 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
 
     public static UI instance;
-
+    [SerializeField] Image[] lifeImages;
     [SerializeField] TextMeshProUGUI scoreText;
 
-    public int lives = 4;
-    public int score = 0;
 
     void Start()
     {
         if (instance != null)
-        {
             Destroy(gameObject);
-        }
         else
-        {
             instance = this;
-        }
+        
+        UpdateScore(GameManager.instance.score);
+        UpdateLives(GameManager.instance.lives);
     }
 
-    public void UpdateScore(int scoreChange)
+    public void UpdateScore(int score)
     {
-        score += scoreChange;
         scoreText.text = score.ToString();
     }
-
-    public void UpdateLives(int livesChange)
+    public void UpdateLives(int lives)
     {
-        lives += livesChange;
+        for (int i = 1; i < lifeImages.Length + 1; i++)
+        {
+            lifeImages[i - 1].enabled = lives >= i;
+        }
     }
 }
