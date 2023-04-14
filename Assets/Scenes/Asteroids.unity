@@ -1061,9 +1061,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAngularVelocity: 100
+  maxAngularVelocityWhenShooting: 90
   maxVelocity: 5
   thrust: 200
-  torque: 60
+  torque: 150
 --- !u!199 &1467320895
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5870,7 +5871,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1538058132411653363, guid: b58360221e3d78c4c83ca33ff5b084e6, type: 3}
   bulletAudio: {fileID: 1078459333}
-  bulletLifeTime: 0.5
+  bulletLifeTime: 0.2
   shotPosition: {fileID: 1078459331}
   recoilForce: 0
   shotForce: 1000

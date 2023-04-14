@@ -5,10 +5,10 @@ public class PlayerForces : MonoBehaviour
     Rigidbody2D rb;
     ParticleSystem particles;
     [SerializeField] float maxAngularVelocity = 90;
+    [SerializeField] float maxAngularVelocityWhenShooting = 90;
     [SerializeField] float maxVelocity = 100;
     [SerializeField] float thrust = 90;
     [SerializeField] float torque = 90;
-    [SerializeField] float torqueWhenShooting = 20;
 
     void Start()
     {
@@ -34,23 +34,18 @@ public class PlayerForces : MonoBehaviour
 
         float rotateInput = Input.GetAxisRaw("Horizontal");
         
-
-        if ( Mathf.Abs(rb.angularVelocity) <= maxAngularVelocity )
-        {
-            float applyTorque = 
-                (Input.GetButton("Fire1") || Input.GetButton("Fire2"))
-                ? torqueWhenShooting
-                : torque; 
-            rb.AddTorque(- rotateInput * Time.fixedDeltaTime * applyTorque);
-        }
+        float appliedMaxAngularVelocity = 
+            (Input.GetButton("Fire1") || Input.GetButton("Fire2"))
+                ? maxAngularVelocityWhenShooting
+                : maxAngularVelocity; 
+        if ( Mathf.Abs(rb.angularVelocity) <= appliedMaxAngularVelocity)
+            rb.AddTorque(- rotateInput * Time.fixedDeltaTime * torque);
         else
-        {
             rb.angularVelocity = Mathf.Clamp(
                 rb.angularVelocity,
-                -maxAngularVelocity,
-                maxAngularVelocity
+                -appliedMaxAngularVelocity,
+                appliedMaxAngularVelocity
             );
-        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
