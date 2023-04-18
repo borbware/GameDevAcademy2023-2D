@@ -55,7 +55,6 @@ public class Loops : MonoBehaviour
                 Instantiate(solttu, new Vector3(x + 0.5f, y + 0.5f, 0), Quaternion.identity);
             }
         }
-
     }
 
     // Update is called once per frame
