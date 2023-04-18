@@ -22,24 +22,26 @@ public class LevelManager : MonoBehaviour
 
         SpawnAsteroids();
     }
-
+    void CheckPositionAndCreateAsteroid()
+    {
+        for (int tries = 10; tries > 0; tries--)
+        {
+            Vector2 position = new Vector2(
+                Random.Range(-halfScreenWidth, halfScreenWidth),
+                Random.Range(-halfScreenHeight, halfScreenHeight)
+            );
+            if (!PositionHasOther(position, 5))
+            {
+                Instantiate(Asteroid, position, Quaternion.identity);
+                break;
+            }
+        }
+    }
     public void SpawnAsteroids()
     {
         for (int i = 0; i < asteroidsToSpawn; i++)
         {
-            Vector2 position;
-            int tries = 10;
-            do
-            {
-                position = new Vector2(
-                    Random.Range(-halfScreenWidth, halfScreenWidth),
-                    Random.Range(-halfScreenHeight, halfScreenHeight)
-                );
-                tries--;
-            }
-            while (PositionHasOther(position, 5) && tries > 0);
-
-            Instantiate(Asteroid, position, Quaternion.identity);
+            CheckPositionAndCreateAsteroid();
         }
         asteroidsToSpawn++;
     }
