@@ -252,16 +252,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &453171568 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1047796956457013353, guid: 9c7666deb6242b64591df4657191220f, type: 3}
-  m_PrefabInstance: {fileID: 1630560264}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &758174056 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1047796956457013353, guid: 9c7666deb6242b64591df4657191220f, type: 3}
-  m_PrefabInstance: {fileID: 2091517471}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1251593557
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +626,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2065351429}
-  - component: {fileID: 2065351428}
   - component: {fileID: 2065351430}
   m_Layer: 0
   m_Name: ScriptExecutor
@@ -645,19 +634,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2065351428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2065351427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e10cd8f6a2cfaa4c8f21a4c2eae5025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  solttu: {fileID: 1047796956457013353, guid: 9c7666deb6242b64591df4657191220f, type: 3}
 --- !u!4 &2065351429
 Transform:
   m_ObjectHideFlags: 0
@@ -685,10 +661,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2084ed558940f04bbf14a2b60c89041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  solttu: {fileID: 1047796956457013353, guid: 9c7666deb6242b64591df4657191220f, type: 3}
   collectionOfIntegers: 
-  solttus:
-  - {fileID: 758174056}
-  - {fileID: 453171568}
+  namesList:
+  - matti
+  - teppo
+  - teppo
+  - teppo
+  solttusArray:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -703,6 +683,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  solttusList: []
 --- !u!1001 &2091517471
 PrefabInstance:
   m_ObjectHideFlags: 0
