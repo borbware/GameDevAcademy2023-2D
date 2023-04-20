@@ -15,7 +15,7 @@ public class TopDownMovement : MonoBehaviour
     void FixedUpdate()
     {
         displacement = new Vector2(
-            Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")
+            Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")
         );
         displacement = Vector2.ClampMagnitude(displacement, 1);
         // rb.MovePosition(rb.position + displacement * Time.deltaTime * walkSpeed);
