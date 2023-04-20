@@ -8,8 +8,8 @@ public class CameraLerp : MonoBehaviour
     [SerializeField] float transitionTime;
     [SerializeField] string cameraState = "static";
 
-    float startX;
-    float endX;
+    Vector3 startPoint;
+    Vector3 endPoint;
     float lerpTime;
 
     void Start()
@@ -17,31 +17,43 @@ public class CameraLerp : MonoBehaviour
         screenHeight = Camera.main.orthographicSize * 2f;
         screenWidth = screenHeight * Camera.main.aspect;
     }
-
+    void StartMoving()
+    {
+        Time.timeScale = 0;
+        cameraState = "moving";
+        startPoint = transform.position;
+        lerpTime = 0;        
+    }
+    void StopMoving()
+    {
+        cameraState = "static";
+        Time.timeScale = 1;
+    }
     void Update()
     {
         if (cameraState == "static")
         {
-            if (Mathf.Abs(player.transform.position.x - transform.position.x) > screenWidth / 2)
+            Vector3 distanceToPlayer = player.transform.position - transform.position;
+            if (Mathf.Abs(distanceToPlayer.x) > screenWidth / 2)
             {
-                cameraState = "moving";
-                startX = transform.position.x;
-                float direction = Mathf.Sign(player.transform.position.x - transform.position.x);
-                endX = transform.position.x + screenWidth * direction;
-                lerpTime = 0;
+                StartMoving();
+                float direction = Mathf.Sign(distanceToPlayer.x);
+                endPoint = transform.position + Vector3.right * screenWidth * direction;
+            }
+            else if (Mathf.Abs(distanceToPlayer.y) > screenHeight / 2)
+            {
+                StartMoving();
+                float direction = Mathf.Sign(distanceToPlayer.y);
+                endPoint = transform.position + Vector3.up * screenHeight * direction;
             }
         }
         else if (cameraState == "moving")
         {
-            transform.position = new Vector3(
-                Mathf.Lerp(startX, endX, lerpTime / transitionTime),
-                0,
-                -10
-            );
-            lerpTime += Time.deltaTime;
-            if (transform.position.x == endX)
+            transform.position = Vector3.Lerp(startPoint, endPoint, lerpTime / transitionTime);
+            lerpTime += Time.unscaledDeltaTime;
+            if (transform.position == endPoint)
             {
-                cameraState = "static";
+                StopMoving();
             }
         }
     }

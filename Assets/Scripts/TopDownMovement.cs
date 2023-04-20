@@ -20,6 +20,7 @@ public class TopDownMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.Log("Here");
         displacement = new Vector2(
             Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")
         );
