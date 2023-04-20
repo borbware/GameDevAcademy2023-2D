@@ -12,6 +12,12 @@ public class TopDownMovement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
     Vector2 displacement;
+    void SetDirectBlendTreeValues()
+    {
+        float angle = Mathf.Atan2(displacement.y, displacement.x) *  Mathf.Rad2Deg;
+        Debug.Log(angle);
+    }
+
     void FixedUpdate()
     {
         displacement = new Vector2(
@@ -26,6 +32,7 @@ public class TopDownMovement : MonoBehaviour
 
         if (displacement.magnitude > 0.1f)
         {
+            SetDirectBlendTreeValues();
             animator.SetFloat("XSpeed", displacement.x);
             animator.SetFloat("YSpeed", displacement.y);
         }
