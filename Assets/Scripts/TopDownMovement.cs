@@ -17,16 +17,47 @@ public class TopDownMovement : MonoBehaviour
         displacement = new Vector2(
             Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")
         );
+        displacement = Vector2.ClampMagnitude(displacement, 1);
         // rb.MovePosition(rb.position + displacement * Time.deltaTime * walkSpeed);
         rb.velocity = displacement * Time.deltaTime * walkSpeed;
+
+        // ver 1
+        animator.SetFloat("WalkSpeed", rb.velocity.magnitude);
+
+        if (displacement.magnitude > 0.1f)
+        {
+            animator.SetFloat("XSpeed", displacement.x);
+            animator.SetFloat("YSpeed", displacement.y);
+        }
+        
+        // // ver 2 (ei toiminu :( )
+        // if (rb.velocity.magnitude > 0)
+        // {
+        //     animator.SetTrigger("StartWalking");
+        // }
+        // else
+        // {
+        //     animator.SetTrigger("StartIdling");
+        // }
+        // ver 3
         if (rb.velocity.magnitude > 0)
         {
-            animator.Play("PlayerWalk");
+            animator.SetBool("Walk", true);
         }
         else
         {
-            animator.Play("PlayerIdle");
+            animator.SetBool("Walk", false);
         }
+
+        // ver 0 (no controller)
+        // if (rb.velocity.magnitude > 0)
+        // {
+        //     //animator.Play("PlayerWalk");
+        // }
+        // else
+        // {
+        //     //animator.Play("PlayerIdle");
+        // }
     }
 
     void OnCollisionEnter2D(Collision2D other) {
