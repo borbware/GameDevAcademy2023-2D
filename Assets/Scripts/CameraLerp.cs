@@ -6,7 +6,12 @@ public class CameraLerp : MonoBehaviour
     [SerializeField] float screenHeight;
     [SerializeField] float screenWidth;
     [SerializeField] float transitionTime;
-    [SerializeField] string cameraState = "static";
+    [SerializeField] CameraState cameraState = CameraState.Static;
+
+    enum CameraState {
+        Static,
+        Moving
+    };
 
     Vector3 startPoint;
     Vector3 endPoint;
@@ -20,18 +25,18 @@ public class CameraLerp : MonoBehaviour
     void StartMoving()
     {
         Time.timeScale = 0;
-        cameraState = "moving";
+        cameraState = CameraState.Moving;
         startPoint = transform.position;
         lerpTime = 0;        
     }
     void StopMoving()
     {
-        cameraState = "static";
+        cameraState = CameraState.Static;
         Time.timeScale = 1;
     }
     void Update()
     {
-        if (cameraState == "static")
+        if (cameraState == CameraState.Static)
         {
             Vector3 distanceToPlayer = player.transform.position - transform.position;
             if (Mathf.Abs(distanceToPlayer.x) > screenWidth / 2)
@@ -47,7 +52,7 @@ public class CameraLerp : MonoBehaviour
                 endPoint = transform.position + Vector3.up * screenHeight * direction;
             }
         }
-        else if (cameraState == "moving")
+        else if (cameraState == CameraState.Moving)
         {
             transform.position = Vector3.Lerp(startPoint, endPoint, lerpTime / transitionTime);
             lerpTime += Time.unscaledDeltaTime;
