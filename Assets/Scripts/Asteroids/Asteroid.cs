@@ -49,13 +49,13 @@ public class Asteroid : MonoBehaviour
     void KillSelf()
     {
         Destroy(gameObject);
-        GameManager.instance.AddScore(1000);
+        AsteroidsGameManager.instance.AddScore(1000);
         SpawnTinyAsteroids();
         UpdateLevelManager();
     }
     void HurtSelf(GameObject hurter)
     {
-        GameManager.instance.AddScore(10);
+        AsteroidsGameManager.instance.AddScore(10);
         rend.material.SetColor("_EmissionColor", Color.white);
         hurtTime = 0f;
         rb.AddForce(hurter.transform.up * bulletPushForce);

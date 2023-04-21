@@ -16,6 +16,11 @@ public class TopDownMovement : MonoBehaviour
     Animator animator;
     void Start()
     {
+        if (DungeonMaster.instance.spawnLocationName != "")
+        {
+            GameObject spawnLocation = GameObject.Find(DungeonMaster.instance.spawnLocationName);
+            transform.position = spawnLocation.transform.position;
+        }
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }

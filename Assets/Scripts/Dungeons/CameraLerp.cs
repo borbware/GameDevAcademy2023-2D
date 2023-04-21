@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraLerp : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    GameObject player;
     [SerializeField] float screenHeight;
     [SerializeField] float screenWidth;
     [SerializeField] float transitionTime;
@@ -21,6 +21,7 @@ public class CameraLerp : MonoBehaviour
     {
         screenHeight = Camera.main.orthographicSize * 2f;
         screenWidth = screenHeight * Camera.main.aspect;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     void StartMoving()
     {

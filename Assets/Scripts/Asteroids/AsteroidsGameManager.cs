@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class AsteroidsGameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static AsteroidsGameManager instance;
     public int lives = 4;
     public int score = 0;
     void Start()

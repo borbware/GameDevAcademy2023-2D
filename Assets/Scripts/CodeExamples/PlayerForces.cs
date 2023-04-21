@@ -52,7 +52,7 @@ public class PlayerForces : MonoBehaviour
     {
         if (other.gameObject.tag == "Asteroid")
         {
-            GameManager.instance.AddLives(-1);
+            AsteroidsGameManager.instance.AddLives(-1);
             gameObject.transform.position = Vector3.zero;
             gameObject.transform.rotation = Quaternion.identity;
             gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;

@@ -17,8 +17,8 @@ public class UI : MonoBehaviour
         else
             instance = this;
         
-        UpdateScore(GameManager.instance.score);
-        UpdateLives(GameManager.instance.lives);
+        UpdateScore(AsteroidsGameManager.instance.score);
+        UpdateLives(AsteroidsGameManager.instance.lives);
     }
 
     public void UpdateScore(int score)

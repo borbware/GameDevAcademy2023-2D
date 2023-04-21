@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Asteroids.unity
     guid: 9c39a7b409264154ea6559efb540bcfc
   - enabled: 1
-    path: Assets/Scenes/TileMapExample.unity
+    path: Assets/Scenes/Overworld.unity
     guid: beecb8bc1e5bbb34e8c16dbacb2b3a59
+  - enabled: 1
+    path: Assets/Scenes/Dungeon.unity
+    guid: d5f31675454cca548bb7b2729f0dfbd3
   m_configObjects: {}
