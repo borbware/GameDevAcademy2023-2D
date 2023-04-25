@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a5746ab43e6644ca6c2bf327024d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1538058132411653363, guid: b58360221e3d78c4c83ca33ff5b084e6, type: 3}
+  bullet: {fileID: 1538058132411653363, guid: ae3f72d2b34eba04e83131688deb8036, type: 3}
   bulletLifeTime: 0.5
   shotPosition: {fileID: 3740041777541322530}
   shotForce: 1000

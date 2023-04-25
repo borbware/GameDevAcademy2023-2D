@@ -7,6 +7,7 @@ public class FollowOnScreen : MonoBehaviour
     GameObject Player;
     GameObject Spawnpoint;
     GameObject Spawnpointcontainer;
+    [SerializeField] bool returnToSpawnPoint = true;
 
     void Start()
     {
@@ -33,11 +34,10 @@ public class FollowOnScreen : MonoBehaviour
     }
     void Update()
     {
-
         if (OnScreen())
         {
             aiset.target = Player.transform;
-        } else {
+        } else if (returnToSpawnPoint) {
             aiset.target = Spawnpoint.transform;
         }
     }

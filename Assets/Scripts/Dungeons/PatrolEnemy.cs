@@ -5,15 +5,16 @@ using UnityEngine;
 public class PatrolEnemy : MonoBehaviour
 {
     AIDestinationSetter aiset;
-    AIPath path;
+    AIPath aipath;
     [SerializeField] List<Transform> patrolPoints = new List<Transform>();
     [SerializeField] int currentTarget;
     void Start()
     {
 
         aiset = GetComponent<AIDestinationSetter>();
-        path = GetComponent<AIPath>();
+        aipath = GetComponent<AIPath>();
 
+        // move patrolpoints under enemypatrolpoints so they won't move as enemy moves
         Transform points = transform.Find("Patrolpoints");
         GameObject newParent = GameObject.Find("EnemyPatrolpoints");
         points.SetParent(newParent.transform);
@@ -34,8 +35,7 @@ public class PatrolEnemy : MonoBehaviour
     void Update()
     {
         Vector3 distance = aiset.target.transform.position - transform.position;
-
-        if (distance.magnitude < path.endReachedDistance)
+        if (distance.magnitude < aipath.endReachedDistance)
         {
             SetCurrentTarget(currentTarget + 1);
         }
