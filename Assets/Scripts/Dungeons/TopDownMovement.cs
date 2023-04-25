@@ -4,6 +4,8 @@ public class TopDownMovement : MonoBehaviour
 {
     [SerializeField] float walkSpeed;
     Rigidbody2D rb;
+    SpriteRenderer sr;
+    Animator animator;
 
     enum PlayerState {
         Hurt,
@@ -11,12 +13,14 @@ public class TopDownMovement : MonoBehaviour
         Walk
     }
     [SerializeField] int hp = 8;
+    [SerializeField] float hurtForce = 2;
+    [SerializeField] float hurtTime = .3f;
     [SerializeField] PlayerState playerState = PlayerState.Idle;
 
-    Animator animator;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
     Vector2 displacement;
@@ -56,13 +60,24 @@ public class TopDownMovement : MonoBehaviour
                 animator.SetBool("Walk", false);
             }
         }
+        else if (playerState == PlayerState.Hurt)
+        {
+            sr.enabled = (Time.time % .1 < .05);
+        }
     }
-
-    void OnCollisionEnter2D(Collision2D other) {
+    void StartIdling()
+    {
+        playerState = PlayerState.Idle;
+        sr.enabled = true;
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
         if (playerState != PlayerState.Hurt && other.gameObject.tag == "Bullet")
         {
+            rb.AddForce(- rb.velocity.normalized * hurtForce, ForceMode2D.Impulse);
             playerState = PlayerState.Hurt;
             hp -= 1;
+            Invoke("StartIdling",hurtTime);
         }
     }
 }
