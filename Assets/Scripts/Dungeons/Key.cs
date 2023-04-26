@@ -3,7 +3,7 @@ using static DungeonMaster;
 
 public class Key : MonoBehaviour
 {
-    public KeyTypeEnum keyType;
+    public KeyType keyType;
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")

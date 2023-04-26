@@ -13,6 +13,7 @@ public class Arrays : MonoBehaviour
     [SerializeField] GameObject[] solttusArray = new GameObject[16];
     [SerializeField] List<GameObject> solttusList = new List<GameObject>();
 
+    
     void ThrashFunction()
     {
 

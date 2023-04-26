@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DungeonMaster : MonoBehaviour
 {
-    public enum KeyTypeEnum {
+    public enum KeyType {
         Blue,
         Yellow,
         Green
@@ -12,35 +12,35 @@ public class DungeonMaster : MonoBehaviour
     public int yellowKeys = 0;
 
     public string spawnLocationName;
-    public static DungeonMaster instance; 
+    public static DungeonMaster instance;
 
-    public bool PlayerHasKey(KeyTypeEnum keyType)
+    public bool PlayerHasKey(KeyType keyType)
     {
-        if (keyType == KeyTypeEnum.Blue)
+        if (keyType == KeyType.Blue)
         {
             return blueKeys > 0;
         }
-        else if (keyType == KeyTypeEnum.Yellow)
+        else if (keyType == KeyType.Yellow)
         {
             return yellowKeys > 0;
         }
-        else if (keyType == KeyTypeEnum.Green)
+        else if (keyType == KeyType.Green)
         {
             return greenKeys > 0;
         }
         return false;
     }
-    public void AddKeys(KeyTypeEnum keyType, int amount)
+    public void AddKeys(KeyType keyType, int amount)
     {
-        if (keyType == KeyTypeEnum.Blue)
+        if (keyType == KeyType.Blue)
         {
             blueKeys += amount;
         }
-        else if (keyType == KeyTypeEnum.Yellow)
+        else if (keyType == KeyType.Yellow)
         {
             yellowKeys += amount;
         }
-        else if (keyType == KeyTypeEnum.Green)
+        else if (keyType == KeyType.Green)
         {
             greenKeys += amount;
         }

@@ -15,8 +15,10 @@ public class PatrolEnemy : MonoBehaviour
         aipath = GetComponent<AIPath>();
 
         // move patrolpoints under enemypatrolpoints so they won't move as enemy moves
+        
         Transform points = transform.Find("Patrolpoints");
         GameObject newParent = GameObject.Find("EnemyPatrolpoints");
+        
         points.SetParent(newParent.transform);
         
         for (int i = 0; i < points.childCount; i++)

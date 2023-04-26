@@ -21,20 +21,9 @@ public class FollowOnScreen : MonoBehaviour
             Spawnpointcontainer.transform
         );
     }
-    
-    bool OnScreen()
-    {
-        float cameraHalfHeight = Camera.main.orthographicSize;
-        float cameraHalfWidth = cameraHalfHeight * Camera.main.aspect;
-        Vector3 difference = Camera.main.transform.position - transform.position;
-        return (
-            Mathf.Abs(difference.x) < cameraHalfWidth 
-            && Mathf.Abs(difference.y) < cameraHalfHeight
-        );
-    }
     void Update()
     {
-        if (OnScreen())
+        if (Cameraf.IsOnScreen(transform))
         {
             aiset.target = Player.transform;
         } else if (returnToSpawnPoint) {

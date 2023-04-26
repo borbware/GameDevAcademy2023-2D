@@ -3,7 +3,7 @@ using static DungeonMaster;
 
 public class Lock : MonoBehaviour
 {
-    public KeyTypeEnum keyType;
+    public KeyType keyType;
 
     void OnCollisionEnter2D(Collision2D other)
     {

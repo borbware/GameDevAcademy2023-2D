@@ -20,23 +20,14 @@ public class PatrolOrFollow : MonoBehaviour
         Transform points = transform.Find("Patrolpoints");
         GameObject newParent = GameObject.Find("EnemyPatrolpoints");
         points.SetParent(newParent.transform);
-        
+
         for (int i = 0; i < points.childCount; i++)
         {
             patrolPoints.Add(points.GetChild(i));
         }
         SetCurrentTarget(0);
     }
-    bool OnScreen()
-    {
-        float cameraHalfHeight = Camera.main.orthographicSize;
-        float cameraHalfWidth = cameraHalfHeight * Camera.main.aspect;
-        Vector3 difference = Camera.main.transform.position - transform.position;
-        return (
-            Mathf.Abs(difference.x) < cameraHalfWidth 
-            && Mathf.Abs(difference.y) < cameraHalfHeight
-        );
-    }
+
     void SetCurrentTarget(int i)
     {
         aiset.target = patrolPoints[i % patrolPoints.Count];
@@ -45,7 +36,7 @@ public class PatrolOrFollow : MonoBehaviour
 
     void Update()
     {
-        if (OnScreen())
+        if (Cameraf.IsOnScreen(transform))
         {
             aiset.target = Player.transform;
         }
@@ -57,6 +48,7 @@ public class PatrolOrFollow : MonoBehaviour
             }
 
             Vector3 distance = aiset.target.transform.position - transform.position;
+
             if (distance.magnitude < aipath.endReachedDistance)
             {
                 SetCurrentTarget(currentTarget + 1);
