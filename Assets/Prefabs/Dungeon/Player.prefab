@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1685572557451553431}
   - component: {fileID: 1685572557451553448}
   - component: {fileID: 1685572557451553449}
-  - component: {fileID: 1685572557451553450}
   - component: {fileID: 1685572557451553429}
   - component: {fileID: 1685572557451553428}
+  - component: {fileID: 1685572557451553450}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -136,21 +136,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1685572557451553450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685572557451553451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1968dbce7c228ad4ebff74a0d7ebb015, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkSpeed: 250
-  hp: 8
-  playerState: 1
 --- !u!95 &1685572557451553429
 Animator:
   serializedVersion: 5
@@ -268,3 +253,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1685572557451553450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685572557451553451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1968dbce7c228ad4ebff74a0d7ebb015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 250
+  hp: 8
+  hurtForce: 2
+  hurtTime: 0.3
+  playerState: 1

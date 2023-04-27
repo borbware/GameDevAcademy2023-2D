@@ -38,8 +38,8 @@ public class TopDownMovement : MonoBehaviour
                 Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")
             );
             displacement = Vector2.ClampMagnitude(displacement, 1);
-            // rb.MovePosition(rb.position + displacement * Time.deltaTime * walkSpeed);
             rb.velocity = displacement * Time.deltaTime * walkSpeed;
+            // rb.MovePosition(rb.position + displacement * Time.deltaTime * walkSpeed);
 
             // ver 1
             animator.SetFloat("WalkSpeed", rb.velocity.magnitude);
