@@ -22,7 +22,7 @@ public class TopDownMovementKinematic : MonoBehaviour
             Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")
         );
         
-        MovePlayer(new Vector2(moveInput.x, moveInput.y));
+        MovePlayer(moveInput);
  
     }
  
@@ -44,7 +44,10 @@ public class TopDownMovementKinematic : MonoBehaviour
         {
             foreach (RaycastHit2D hit in results)
             {
-                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime + hit.normal * hit.distance);
+                rb.MovePosition(
+                    rb.position + direction * moveSpeed * Time.fixedDeltaTime
+                    + hit.normal * hit.distance
+                );
                 print(hit.ToString());
             }
         }
