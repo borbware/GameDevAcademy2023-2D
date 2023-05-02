@@ -19,10 +19,17 @@ public class CameraLerp : MonoBehaviour
 
     void Start()
     {
-        screenHeight = Camera.main.orthographicSize * 2f;
-        screenWidth = screenHeight * Camera.main.aspect;
+        screenHeight = 10; //Camera.main.orthographicSize * 2f;
+        screenWidth = 15; //screenHeight * Camera.main.aspect;
         player = GameObject.FindGameObjectWithTag("Player");
+
     }
+    // void OnGUI()
+    // {
+
+    //     GUI.Button(new Rect(100, 30, 150, 30), screenHeight.ToString());
+    //     GUI.Button(new Rect(100, 60, 150, 30), screenWidth.ToString());
+    // }
     void StartMoving()
     {
         Time.timeScale = 0;
