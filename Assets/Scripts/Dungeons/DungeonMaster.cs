@@ -30,6 +30,7 @@ public class DungeonMaster : MonoBehaviour
         }
         return false;
     }
+
     public void AddKeys(KeyType keyType, int amount)
     {
         if (keyType == KeyType.Blue)

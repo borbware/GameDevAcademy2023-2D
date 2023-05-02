@@ -17,13 +17,11 @@ public class TopDownMovementKinematic : MonoBehaviour
  
     public void FixedUpdate()
     {
-        
         moveInput = new Vector2(
             Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")
         );
         
         MovePlayer(moveInput);
- 
     }
  
     // Tries to move the player in a direction by casting in that direction
