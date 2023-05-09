@@ -7,15 +7,16 @@ public class TopDownMovement : MonoBehaviour
     SpriteRenderer sr;
     Animator animator;
 
-    enum PlayerState {
+    public enum PlayerState {
         Hurt,
         Idle,
-        Walk
+        Walk,
+        Talk
     }
     [SerializeField] int hp = 8;
     [SerializeField] float hurtForce = 2;
     [SerializeField] float hurtTime = .3f;
-    [SerializeField] PlayerState playerState = PlayerState.Idle;
+    public PlayerState playerState = PlayerState.Idle;
 
     void Start()
     {
