@@ -94,14 +94,10 @@ public class DialogueManager : MonoBehaviour
             StopDialogue();
         }
     }
-    void StartIdling()
-    {
-        playerMovement.SendMessage("StartIdling");
-    }
     public void StopDialogue()
     {
         SetInActive();
-        Invoke("StartIdling",0.5f);
+        playerMovement.Invoke("StartIdling",0.5f);
     }
 
     void Update()

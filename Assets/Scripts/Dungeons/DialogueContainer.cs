@@ -8,7 +8,8 @@ public class DialogueContainer : MonoBehaviour
 
     void Update()
     {
-        jumpInput = Input.GetButton("Jump");
+        if (Input.GetButton("Jump"))
+            jumpInput = true;
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -16,17 +17,12 @@ public class DialogueContainer : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             TopDownMovement playerMovement = other.gameObject.GetComponent<TopDownMovement>();
-            if (
-                (
-                    playerMovement.playerState == TopDownMovement.PlayerState.Idle
-                    || playerMovement.playerState == TopDownMovement.PlayerState.Walk
-                )
-            && jumpInput)
+            if (playerMovement.idleOrWalk && jumpInput)
             {
                 DialogueManager.instance.StartDialogue(messages);
                 playerMovement.playerState = TopDownMovement.PlayerState.Talk;
-                Debug.Log("asdf");
             }
         }
+        jumpInput = false;
     }
 }

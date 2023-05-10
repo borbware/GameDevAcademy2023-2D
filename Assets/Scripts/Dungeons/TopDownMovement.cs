@@ -13,6 +13,13 @@ public class TopDownMovement : MonoBehaviour
         Walk,
         Talk
     }
+    public bool idleOrWalk {
+        get
+        {
+            return playerState == TopDownMovement.PlayerState.Idle
+                || playerState == TopDownMovement.PlayerState.Walk;
+        }
+    }
     [SerializeField] int hp = 8;
     [SerializeField] float hurtForce = 2;
     [SerializeField] float hurtTime = .3f;
@@ -33,7 +40,7 @@ public class TopDownMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (playerState == PlayerState.Idle || playerState == PlayerState.Walk)
+        if (idleOrWalk)
         {
             displacement = new Vector2(
                 Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")
